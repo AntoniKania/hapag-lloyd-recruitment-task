@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db:
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=demo
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+#      - postgres_data:/var/lib/postgresql/data
+
+# uncomment for persistence db
+
+#volumes:
+#  postgres_data:
