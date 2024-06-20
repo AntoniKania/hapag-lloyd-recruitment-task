@@ -90,7 +90,7 @@ class AccountServiceTest {
         when(accountRepository.findById(any()))
                 .thenReturn(Optional.of(new Account(null, null, null, null)));
         // when
-        accountService.getAccount(1L);
+        accountService.getAccounts(1L);
         // then
         verify(accountRepository, times(1)).findById(1L);
     }
@@ -101,7 +101,7 @@ class AccountServiceTest {
         when(accountRepository.findById(any())).thenReturn(Optional.empty());
         // when & then
         NotFoundException thrown = assertThrows(NotFoundException.class,
-                () -> accountService.getAccount(1L)
+                () -> accountService.getAccounts(1L)
         );
         assertEquals("Account not found", thrown.getMessage());
     }

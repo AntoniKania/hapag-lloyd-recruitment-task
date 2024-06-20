@@ -5,6 +5,7 @@ import com.example.demo.model.Account;
 import com.example.demo.dto.CreateAccountDto;
 import com.example.demo.dto.ModifyAccountDto;
 import com.example.demo.service.AccountService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -34,7 +35,12 @@ public class AccountController {
 
     @GetMapping("{id}")
     public ResponseEntity<AccountDto> getAccount(@PathVariable Long id) {
-        return ResponseEntity.ok(accountService.getAccount(id));
+        return ResponseEntity.ok(accountService.getAccounts(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<AccountDto>> getAccounts(@RequestParam int pageNumber, @RequestParam int pageSize) {
+        return ResponseEntity.ok(accountService.getAccounts(pageNumber, pageSize));
     }
 
     @DeleteMapping("{id}")
