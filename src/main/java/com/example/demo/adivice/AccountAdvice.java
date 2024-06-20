@@ -17,7 +17,7 @@ public class AccountAdvice {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<String> handleBadRequestException(NotFoundException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(ex.getMessage());
     }
 }
