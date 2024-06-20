@@ -40,7 +40,9 @@ docker-compose up -d
 - Deleting account
 ![Screenshot_20240621_002838](https://github.com/AntoniKania/hapag-lloyd-recruitment-task/assets/87483058/d925abc1-8fd8-41be-8393-33d78640252e)
 - Getting deleted account
-![Screenshot_20240621_002855](https://github.com/AntoniKania/hapag-lloyd-recruitment-task/assets/87483058/e9fc08d9-fb97-45ba-b8f0-2e9c09765640)
+![image](https://github.com/AntoniKania/hapag-lloyd-recruitment-task/assets/87483058/a7e5331d-6577-4b8d-a21f-0c322775e621)
+
+
 - Getting accounts with pagination
 ![Screenshot_20240621_002739](https://github.com/AntoniKania/hapag-lloyd-recruitment-task/assets/87483058/363ffd95-041b-4fd6-932b-16a8f7dc32ec)
 
