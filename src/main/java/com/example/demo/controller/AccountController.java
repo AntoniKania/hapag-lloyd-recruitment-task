@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.Account;
 import com.example.demo.dto.AccountDto;
+import com.example.demo.model.Account;
+import com.example.demo.dto.CreateAccountDto;
 import com.example.demo.dto.ModifyAccountDto;
 import com.example.demo.service.AccountService;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class AccountController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createAccount(@RequestBody AccountDto accountDto) {
-        Account account = accountService.createAccount(accountDto);
+    public ResponseEntity<Void> createAccount(@RequestBody CreateAccountDto createAccountDto) {
+        Account account = accountService.createAccount(createAccountDto);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

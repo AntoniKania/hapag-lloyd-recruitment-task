@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.Account;
 import com.example.demo.dto.AccountDto;
+import com.example.demo.model.Account;
+import com.example.demo.dto.CreateAccountDto;
 import com.example.demo.dto.ModifyAccountDto;
 import com.example.demo.exception.InvalidUsernameException;
 import com.example.demo.exception.NotFoundException;
@@ -20,13 +21,13 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    public Account createAccount(AccountDto accountDto) {
-        Account account = new Account(accountDto.username(), accountDto.gender(), accountDto.age(), LocalDateTime.now());
+    public Account createAccount(CreateAccountDto createAccountDto) {
+        Account account = new Account(createAccountDto.username(), createAccountDto.gender(), createAccountDto.age(), LocalDateTime.now());
         Account createdAccount;
         try {
             createdAccount = accountRepository.saveAndFlush(account);
         } catch (DataIntegrityViolationException e) {
-            throw new InvalidUsernameException("Invalid username!"); // naive assumption
+            throw new InvalidUsernameException("Username exists!"); // naive assumption
         }
         return createdAccount;
     }
@@ -37,7 +38,7 @@ public class AccountService {
             throw new NotFoundException("Account not found");
         }
         Account account = accountOpt.get();
-        return new AccountDto(account.getUsername(), account.getGender(), account.getAge());
+        return new AccountDto(account.getUsername(), account.getGender(), account.getAge(), account.getCreationDate());
     }
 
     public void deleteAccount(Long id) {
@@ -57,6 +58,7 @@ public class AccountService {
             account.setAge(accountDto.age());
         }
         Account updatedAccount = accountRepository.saveAndFlush(account);
-        return new AccountDto(updatedAccount.getUsername(), updatedAccount.getGender(), updatedAccount.getAge());
+        return new AccountDto(updatedAccount.getUsername(), updatedAccount.getGender(), updatedAccount.getAge(),
+                updatedAccount.getCreationDate());
     }
 }

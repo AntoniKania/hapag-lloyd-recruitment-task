@@ -1,6 +1,5 @@
-package com.example.demo.dao;
+package com.example.demo.model;
 
-import com.example.demo.model.Gender;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
